@@ -1,42 +1,69 @@
-### Email Automation with Python
+# 📧 Email Automation with Python
 
-This project automates the process of sending customized HTML emails to multiple recipients using Python. It loads email addresses and names from a CSV file, generates a personalized email for each recipient, and sends them via SMTP.
+This project automates the process of sending personalized HTML emails to multiple recipients using Python. It reads recipient data from a CSV file, generates customized messages using an HTML template, and sends them via SMTP.
 
-### Features
+---
 
-- Sends customized emails using an HTML template.
-- Loads recipient information from a CSV file.
-- Uses environment variables for email configuration.
-- Supports sending via Gmail's SMTP server.
+## ✅ Features
 
-### Tech Stack
+- 🔹 Sends customized emails using an HTML template powered by **Jinja2**  
+- 🔹 Loads recipient details (name and email) from a **CSV** file  
+- 🔹 Uses **environment variables** for secure email credentials  
+- 🔹 Supports **Gmail SMTP** (or any other provider with simple config changes)
 
-    - Python
-    - Jinja2 (for HTML template rendering)
-    - SMTP (via Gmail)
-    - pandas (for reading CSV files)
-    - dotenv (for environment variables)
+---
 
-**Setup**
-- Add your email credentials:
+## 🛠 Tech Stack
+
+- **Python**
+- **Jinja2** – for HTML templating  
+- **pandas** – to process CSV files  
+- **smtplib** – to send emails via SMTP  
+- **dotenv** – for secure configuration using `.env` files
+
+---
+
+## ⚙️ Setup Instructions
+
+1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/email-automation.git
+cd email-automation
 ```
-EMAIL_ADDRESS=your_email@gmail.com
-EMAIL_PASSWORD=your_email_password
-```
-- SMTP Server Configuration
+2. Install Dependencies
+- Use pip to install required packages:
 
-The default SMTP server is set to Gmail's SMTP server (smtp.gmail.com) with port 587. If you're using a different email provider, you can modify the SMTP_SERVER and SMTP_PORT values in the config.py file.
-- Prepare the CSV File
+`pip install -r requirements.txt`
 
-***Create a CSV file (emails.csv) with the following structure:***
-```
-email,name
-recipient1@example.com,Mr X
-recipient2@example.com,Mr Y
-```
-- Run the Email Sending Script
+3. Add Your Email Credentials
+- Create a .env file in the root directory:
+    ```
+    EMAIL_ADDRESS=your_email@gmail.com
+    EMAIL_PASSWORD=your_email_password
+    ```
+- ⚠️ If you're using Gmail with 2-Step Verification, use an App Password.
 
-***Once everything is set up, run the Python script to send the emails:***
+4. SMTP Configuration (Optional)
+- By default, the script uses Gmail:
+  ```
+    SMTP_SERVER = "smtp.gmail.com"
+    SMTP_PORT = 587
+  ```
+- To use another email provider, update these values in config.py.
 
-- This will send a customized email to each recipient listed in the CSV file using the HTML template.
+5. Prepare the Recipients List
+- Create an emails.csv file in the following format:
+    ```
+    email,name
+    recipient1@example.com,Mr X
+    recipient2@example.com,Mr Y
+    ```
+6. Run the Script
+- Use the following command to send emails:
+
+`python send_emails.py`
+
+- Each recipient will receive a customized email rendered from the HTML template.
+
 
